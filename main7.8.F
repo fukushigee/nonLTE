@@ -66,7 +66,7 @@
 !# when use scalar sigma (torus), flag 0
 #define SIG 0
 !#--- end of parameter setting part (MY) ----#
-
+!fukushige
 !-------------------------------------------------------------!
       module Rays
       real*8, save,allocatable :: x0(:,:,:), y0(:,:,:), z0(:,:,:)
