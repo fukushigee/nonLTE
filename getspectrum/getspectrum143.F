@@ -32,7 +32,7 @@
 !#define LEVD 'pma0129_data2/010nlev.d'
 !#define SPECT 'pma0129_data2/sp'
 !#define INTENSITY 'pma0129_data2/intensity'
-#define LEVD '006nlev_co.d'
+#define LEVD '005nlev.d'
 !#define LEVD '006nlev_hcn.d'
 #define SPECT 'sp'
 #define INTENSITY 'intensity'
