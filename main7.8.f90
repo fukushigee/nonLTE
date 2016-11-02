@@ -179,7 +179,7 @@
 ! lev+50=50,51,... norm
 ! lev+60=60,61,... disp
 ! lev+10=10,11,... Tr
-! 150, 5 are changed to variables in cpp
+! 20, 5 are changed to variables in cpp
 ! L.986 do lev=0,lavmax-->do lev=1,lavmax
 !
 ! 7.2: Solve_I_0 is revised to fit
@@ -424,7 +424,7 @@
       use Rays
       use state_inc
       implicit real*8(a-h,o-z)
-      parameter(Nray0=150,levmax=5,ixm2=ixm+2,iym2=iym+2,izm2=izm+2, &
+      parameter(Nray0=20,levmax=5,ixm2=ixm+2,iym2=iym+2,izm2=izm+2, &
                 pc=3.0857d18, au = 1.496d13)
 
       real*8, dimension(1:ixmax+1, 1:iymax+1, 1:izmax+1) :: sigma
@@ -547,7 +547,7 @@
 ! r2=(rmax/dx0)**2
       eps=1d-8
 
-      Nray=100
+      Nray=20
 
 ! print parameters
       write(*,'(''Ng='',i3)') ng
@@ -690,7 +690,7 @@
 
       subroutine getran(rand,N)
       implicit real*8(a-h,o-z)
-      parameter(Nray0=150)
+      parameter(Nray0=20)
       save ix, init
       data isw/0/,init/1/
       dimension rand(N),ivw(128)
@@ -737,7 +737,7 @@
 
       subroutine getran_normal(rand_normal,N)
       implicit real*8(a-h,o-z)
-      parameter(Nray0=150)
+      parameter(Nray0=20)
       real*8 rand_normal(N)
       real*4 s(Nray0)
       data init/1/
@@ -1026,7 +1026,7 @@
       use Rays
       use state_inc
       implicit real*8(a-h,o-z)
-      parameter(levmax=5,Nray0=150, &
+      parameter(levmax=5,Nray0=20, &
                 ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
       integer, parameter::dim_n=(levmax+1)*ixm*iym*izm, &
                           dim_c=(nlevmax+1)*(nlevmax+1)
@@ -1193,7 +1193,7 @@
       implicit real*8(a-h,o-z)
 ! parameter (ng=128)
       parameter(ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
-      parameter (Nray0=150,levmax=5)
+      parameter (Nray0=20,levmax=5)
 ! real*8 S(levmax)
       real*8 w(levmax), Intensity(Nray0,levmax), Js(levmax)
       real*8 nx(Nray), ny(Nray), nz(Nray) ! directions of Rays from boundary to (x0,y0,z0)
@@ -1570,7 +1570,7 @@
       use state_inc
       implicit real*8(a-h,o-z)
 
-      parameter (Nray0=150,Lmax=ng*3,levmax=5, ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
+      parameter (Nray0=20,Lmax=ng*3,levmax=5, ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
       common /grid/ xf(0:ixm2), yf(0:iym2), zf(0:izm2), dx0, eps, xcent, ycent, zcent
       common /const/ h,lc,bc
       real*8 lc
@@ -1825,7 +1825,7 @@
       use Rays
       use state_inc
       implicit real*8(a-h,o-z)
-      parameter(Nray0=150,levmax=5, &
+      parameter(Nray0=20,levmax=5, &
                 ixm2=ixm+2,iym2=iym+2,izm2=izm+2,pc=3.0857d18)
 
 ! common /Rays/ x0,y0,z0,nx,ny,nz,x1,y1,z1,x2,y2,z2,dnu_nu0,Nray

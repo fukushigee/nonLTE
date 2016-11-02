@@ -1,0 +1,80 @@
+ INPUT FILE: pma0129_nonlte128.data                                      
+ INPUT FILE: pma0129_nonlte128.data                                      
+ INPUT FILE: pma0129_nonlte128.data                                      
+ INPUT FILE: pma0129_nonlte128.data                                      
+ INPUT FILE: pma0129_nonlte128.data                                      
+ INPUT FILE: pma0129_nonlte128.data                                      
+ INPUT FILE: pma0129_nonlte128.data                                      
+ INPUT FILE: pma0129_nonlte128.data                                      
+ ng=         128 izmax=         127
+ ng=         128 izmax=         127
+ ng=         128 izmax=         127
+ ng=         128 izmax=         127
+ ng=         128 izmax=         127
+ max, min rho()   996504.13      3.35999971E-07
+ max, min rho()   996504.13      3.35999971E-07
+ max, min rho()   996504.13      3.35999971E-07
+ max, min rho()   996504.13      3.35999971E-07
+ ng=         128 izmax=         127
+ max, min rho()   996504.13      3.35999971E-07
+ ng=         128 izmax=         127
+ ng=         128 izmax=         127
+ max, min rho()   996504.13      3.35999971E-07
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min rho()   996504.13      3.35999971E-07
+ max, min rho()   996504.13      3.35999971E-07
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min tk()   300.00000000000000        20.000000000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min vx()   58752000.000000000       -94500864.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vy()   68966432.000000000       -57056780.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+ max, min vz()   69595584.000000000       -83548120.000000000     
+Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(467)..............: 
+MPID_Init(177).....................: channel initialization failed
+MPIDI_CH3_Init(70).................: 
+MPID_nem_init(319).................: 
+MPID_nem_tcp_init(171).............: 
+MPID_nem_tcp_get_business_card(418): 
+MPID_nem_tcp_init(377).............: gethostbyname failed, usbitch (errno 1)
+Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(467)..............: 
+MPID_Init(177).....................: channel initialization failed
+MPIDI_CH3_Init(70).................: 
+MPID_nem_init(319).................: 
+MPID_nem_tcp_init(171).............: 
+MPID_nem_tcp_get_business_card(418): 
+MPID_nem_tcp_init(377).............: gethostbyname failed, usbitch (errno 1)
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 9422 RUNNING AT usbitch
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
