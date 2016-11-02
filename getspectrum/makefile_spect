@@ -3,11 +3,11 @@
 src=getspectrum143
 #F77 =  /usr/lang/mpi2/bin/mpifrt
 #F77 = /usr/local/mpich-intel81/bin/mpif90
-#F77 = mpif90 
-F77 = ifort 
+F77 = gfortran 
+#F77 =ifort  
 # F77 = frt
 RM=/bin/rm
-CFLAGS = -132 -O2 
+CFLAGS =  -132 -O2 
 #CFLAGS = -132 -CB -g -traceback -check all
 #CFLAGS = -132 -O2 -convert big_endian
 #CFLAGS = -132  -convert big_endian -O1 -fpe0 -traceback -g -CB

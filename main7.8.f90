@@ -1877,7 +1877,7 @@
       data init/1/,final/49/
       save init,final
 
-      outfile_directry = '/work2/nonlte/result/'
+      outfile_directry = 'OUTDIR/'
       print*,'outfile directry: ', outfile_directry
 
 

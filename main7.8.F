@@ -1,5 +1,5 @@
 !output directry
-#define OUTDIR '/work2/nonlte/result/'
+#define OUTDIR 'OUTDIR/'
 !!!!!!!!!!!!!!
 !#ifdef VPP
 !#define NG 128 
