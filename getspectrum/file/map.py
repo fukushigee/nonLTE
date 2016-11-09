@@ -2,10 +2,13 @@ from pylab import *
 import numpy as np
 from matplotlib import pyplot as plt
 
+head = ("head","<i")
+tail = ("tail","<i")
+
 
 N=128 #grid
 lev=2 #level
-dt = np.dtype([("TBIvel","<81920f")])     #81920=128*128*5,,,32768=128*128*2
+dt = np.dtype([head,("TBIvel","<81920f"),tail])     #81920=128*128*5,,,32768=128*128*2
 
 fd = open("spnnnlev.b","rb")  #spnlev.b
 data = np.fromfile(fd, dtype=dt, count=-1) #bynal
