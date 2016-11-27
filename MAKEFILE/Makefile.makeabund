@@ -1,0 +1,14 @@
+#!/bin/sh
+
+PROG = makeabund
+FC = ifort
+
+all:
+	$(FC) -convert big_endian -o $(PROG) $(PROG).F
+	./$(PROG)
+
+clean:
+	rm -f *.o
+
+distclean:
+	rm -f *.o $(PROG) 
