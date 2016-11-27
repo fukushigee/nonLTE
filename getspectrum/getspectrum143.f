@@ -30,14 +30,14 @@
 !#define SPECT 'pma0129_data2/sp'
 !#define INTENSITY 'pma0129_data2/intensity'
 
-!#define '005nlev.d' '006nlev_hcn.d'
+!#define '008nlev.d' '006nlev_hcn.d'
 
 
 
 
       module grid_size
       integer,parameter :: ng=128, ngz = 128, ixm=ng,iym=ng,izm=ngz
-      integer,parameter :: levmax=5
+      integer,parameter :: levmax=10
       integer,parameter:: mvelmax=50 !number of levels
 
         integer,parameter :: Nray0=1000,
@@ -92,7 +92,7 @@
       use phys_const
       implicit none
 ! integer,parameter :: ng=128, ngz = 128, ixm=ng,iym=ng,izm=ngz
-! integer,parameter :: levmax=5
+! integer,parameter :: levmax=10
 
 ! include 'mpif.h'
 ! common /M_param/ Nprocs, Myrank, ista, iend
@@ -162,7 +162,7 @@
       character(40) :: input_levd
 
 
-      integer, parameter :: Nray=100
+      integer, parameter :: Nray=200
 
 
       print*,'velocity resolution dv: ', dv/1.e5, 'km/s'
@@ -178,7 +178,7 @@
       end do
 
 ! You have to change the file name to write down the result.
-        input_levd = '005nlev.d'
+        input_levd = '008nlev.d'
         print*,'INPUT file:', input_levd
 
       open(final,file=input_levd,
@@ -404,7 +404,7 @@
 ! implicit real*8(a-h,o-z)
       implicit none
       integer :: lev, i1, i2, mvel
-! integer,parameter::levmax=5
+! integer,parameter::levmax=10
 ! integer, parameter :: ng=128
 ! integer, parameter :: ngz=128
 ! integer, parameter ixm=ng,iym=ng,izm=ngz,

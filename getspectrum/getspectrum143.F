@@ -23,7 +23,7 @@
 #ifdef ALPHA
 #define NG 128
 #define NGZ 128 
-#define NRAY 100
+#define NRAY 200
 #define LEVMAX 5 
 #define VIEWANGLE 45 
 #define NCHANNEL 50
@@ -32,7 +32,7 @@
 !#define LEVD 'pma0129_data2/010nlev.d'
 !#define SPECT 'pma0129_data2/sp'
 !#define INTENSITY 'pma0129_data2/intensity'
-#define LEVD '005nlev.d'
+#define LEVD '0020nlev.d'
 !#define LEVD '006nlev_hcn.d'
 #define SPECT 'sp'
 #define INTENSITY 'intensity'

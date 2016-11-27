@@ -3,10 +3,10 @@
 #
 src=main7.8
 # Cray 
-#F90C = ftn 
+F90C = ftn 
 # intel pc
 #F90C =  /usr/local/mpich-gcc47/bin/mpif90
-F90C = mpif90
+#F90C = mpif90
 #F90 = /usr/local/mpich/bin/mpif90
 #F90 = /usr/local/mpich-intel81/bin/mpif90
 #F90 = /usr/local/mpich-intel81/bin/mpif90
@@ -41,7 +41,8 @@ NRDIR = .
 # Cray
 #PROGRAM         = /work/wadaki/nonlte/yamada.out 
 # PC
-PROGRAM         = zikkou/fuku.out
+#PROGRAM         = zikkou/fuku.out
+PROGRAM         = fuku.out
 
 all: ${src}
 
@@ -69,4 +70,4 @@ dlubksb.o : $(NRDIR)/dlubksb.f90
 	$(F90C) $(F90FLAGS)  -c $(NRDIR)/dlubksb.f90
 
 clean: 
-	$(RM) *.o *.f
+	$(RM) *.o *.f tes* fuku*

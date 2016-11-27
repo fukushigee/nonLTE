@@ -3,7 +3,7 @@
 src=getspectrum143
 #F77 =  /usr/lang/mpi2/bin/mpifrt
 #F77 = /usr/local/mpich-intel81/bin/mpif90
-F77 = gfortran 
+F77 = ftn 
 #F77 =ifort  
 # F77 = frt
 RM=/bin/rm
@@ -40,4 +40,4 @@ ${src}: $(src).o
 #	$(F77) $(LFLAGS) -o ${src} $(src).o -lssl2vp
 	$(F77) $(LFLAGS) -o ${src} $(src).o
 clean: 
-	$(RM) *.o *.f
+	$(RM) *.o *.f sp* 

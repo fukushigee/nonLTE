@@ -1,5 +1,5 @@
 !output directry
-#define OUTDIR 'OUTDIR/'
+#define OUTDIR 'getspectrum/'
 !!!!!!!!!!!!!!
 !#ifdef VPP
 !#define NG 128 
@@ -23,8 +23,8 @@
 !#define INFILENAME 'agn_input3.data'
 #define INFILENAME 'pma0129_nonlte128.data'
 !#define DATADIR 'data3'
-#define NRAY 20
-#define LOOPMAX 5
+#define NRAY 200
+#define LOOPMAX 20
 !#define CCOEFF 'CO12_test.dat'
 #define CCOEFF 'CO-H2para.dat'
 !#define CCOEFF 'HCN_test.dat'
@@ -36,7 +36,7 @@
 !#define CCOEFF 'SiO_reform.dat'
 !#define CCOEFF 'HNC.dat'
 #endif
-#define NRAY0 20
+#define NRAY0 200
 #define LEVMAX 5
 #define TABLEMIN 1
 !# TABLEMAX = 15(HCO+) 14(HCN, HNC, CO12, CO13) 13(SiO, reform)
