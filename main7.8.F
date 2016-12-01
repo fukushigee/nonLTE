@@ -24,7 +24,7 @@
 #define INFILENAME 'pma0129_nonlte128.data'
 !#define DATADIR 'data3'
 #define NRAY 200
-#define LOOPMAX 20
+#define LOOPMAX 10
 !#define CCOEFF 'CO12_test.dat'
 #define CCOEFF 'CO-H2para.dat'
 !#define CCOEFF 'HCN_test.dat'
@@ -37,7 +37,7 @@
 !#define CCOEFF 'HNC.dat'
 #endif
 #define NRAY0 200
-#define LEVMAX 5
+#define LEVMAX 10
 #define TABLEMIN 1
 !# TABLEMAX = 15(HCO+) 14(HCN, HNC, CO12, CO13) 13(SiO, reform)
 !#define TABLEMAX 14
@@ -525,9 +525,9 @@
 
 !     read mol data
       open(molecule_data,file=CCOEFF,form='formatted',status='old')
-      read(molecule_data,'(a10)') kind
-      write(*,'(a10)') kind
-      read(molecule_data,*) XC
+      read(molecule_data,'(a10)') kind !CO 
+      write(*,'(a10)') kind  !CO
+      read(molecule_data,*) XC !abundance
       read(molecule_data,*) mu
                                 ! CO electric dipole moment 
       read(molecule_data,*) bb
@@ -579,9 +579,10 @@
 !      print*, 'min and max BG=', minval(BG), maxval(BG)
 !      print*, 'min and max e=', minval(e), maxval(e)
 
-      read(molecule_data,*) level0
+      read(molecule_data,*) level0  !read CO-H2para.dat
+      print*, 'level0=', level0 !<-29
       if (level0 .ne. levmax) then
-        write(*,'(''levmax='',i2,3x,''lev data='',i2)')levmax,level0
+        write(*,'(''levmax='',i2,3x,''lev data='',i2)')levmax,level0 !levmax and 29
       endif
 
       close(molecule_data)
@@ -649,7 +650,7 @@
                     nx(1,i,j,k),ny(1,i,j,k),nz(1,i,j,k), &
                     x1(1,i,j,k),y1(1,i,j,k),z1(1,i,j,k), &
                     x2(1,i,j,k),y2(1,i,j,k),z2(1,i,j,k), &
-                         dnu_nu0(1,i,j,k),sigmac,rand,rand_normal, &
+                         dnu_nu0(1,i,j,k),sigmac,rand,rand_normal, & !sigmac
 !     *              dnu_nu0(1,i,j,k),sigma(i,j,k),rand,rand_normal,
                     Nray,i,j,k)
             end do
@@ -664,7 +665,7 @@
                     x1(1,i,j,k),y1(1,i,j,k),z1(1,i,j,k), &
                     x2(1,i,j,k),y2(1,i,j,k),z2(1,i,j,k), &
 !     *                   dnu_nu0(1,i,j,k),sigma,rand,rand_normal,
-                    dnu_nu0(1,i,j,k),sigma(i,j,k),rand,rand_normal, &
+                    dnu_nu0(1,i,j,k),sigma(i,j,k),rand,rand_normal, & !sigma(i,j,k)
                     Nray,i,j,k)
             end do
          end do
@@ -887,7 +888,7 @@
             isigz = 1
          else
             iz(iray) = 1
-            isigz = 0
+            isigz = 0 !do roop no hurui kakika
          endif
 
 
@@ -2096,7 +2097,7 @@
       END IF
 !MAIN LOOP
       CALL URAND1(NN, X, IR)
-      DO 10 I = 1, NN, 2
+      DO 10 I = 1, NN, 2 !do roop no hurui kakikata
        R=SQRT(-2.0D0*LOG(X(I)))
        T=PI2*X(I+1)
        X(I  ) = R * SIN(T)
