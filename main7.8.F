@@ -23,8 +23,8 @@
 !#define INFILENAME 'agn_input3.data'
 #define INFILENAME 'pma0129_nonlte128.data'
 !#define DATADIR 'data3'
-#define NRAY 200
-#define LOOPMAX 10
+#define NRAY 20
+#define LOOPMAX 5
 !#define CCOEFF 'CO12_test.dat'
 #define CCOEFF 'CO-H2para.dat'
 !#define CCOEFF 'HCN_test.dat'
@@ -36,8 +36,8 @@
 !#define CCOEFF 'SiO_reform.dat'
 !#define CCOEFF 'HNC.dat'
 #endif
-#define NRAY0 200
-#define LEVMAX 10
+#define NRAY0 20
+#define LEVMAX 5
 #define TABLEMIN 1
 !# TABLEMAX = 15(HCO+) 14(HCN, HNC, CO12, CO13) 13(SiO, reform)
 !#define TABLEMAX 14
@@ -267,14 +267,14 @@
       end select
 
       do Loop=1,Loopmax
-!         print*, 'Loop before Solve_I=', Loop
+         print*, 'Loop before Solve_I=', Loop
          call Solve_I
 !debug
 !        stop
 !debug
         call norm(dif)
         call underrelaxation(1d0)
-!!        print*, 'Loop before Temperature=', Loop
+!!!        print*, 'Loop before Temperature=', Loop
 !!        print*, Loop, float(Loop), 10**(int(log10(float(Loop))))
 !!     $       , min(10, 10**(int(log10(float(Loop)))))
 !!        if(mod(Loop,10**(int(log10(float(Loop)))))==0) then
@@ -525,9 +525,9 @@
 
 !     read mol data
       open(molecule_data,file=CCOEFF,form='formatted',status='old')
-      read(molecule_data,'(a10)') kind !CO 
-      write(*,'(a10)') kind  !CO
-      read(molecule_data,*) XC !abundance
+      read(molecule_data,'(a10)') kind
+      write(*,'(a10)') kind
+      read(molecule_data,*) XC
       read(molecule_data,*) mu
                                 ! CO electric dipole moment 
       read(molecule_data,*) bb
@@ -576,13 +576,12 @@
 !          endif
 !debug
       end do
-!      print*, 'min and max BG=', minval(BG), maxval(BG)
-!      print*, 'min and max e=', minval(e), maxval(e)
+      print*, 'min and max BG=', minval(BG), maxval(BG)
+      print*, 'min and max e=', minval(e), maxval(e)
 
-      read(molecule_data,*) level0  !read CO-H2para.dat
-      print*, 'level0=', level0 !<-29
+      read(molecule_data,*) level0
       if (level0 .ne. levmax) then
-        write(*,'(''levmax='',i2,3x,''lev data='',i2)')levmax,level0 !levmax and 29
+        write(*,'(''levmax='',i2,3x,''lev data='',i2)')levmax,level0
       endif
 
       close(molecule_data)
@@ -650,7 +649,7 @@
                     nx(1,i,j,k),ny(1,i,j,k),nz(1,i,j,k), &
                     x1(1,i,j,k),y1(1,i,j,k),z1(1,i,j,k), &
                     x2(1,i,j,k),y2(1,i,j,k),z2(1,i,j,k), &
-                         dnu_nu0(1,i,j,k),sigmac,rand,rand_normal, & !sigmac
+                         dnu_nu0(1,i,j,k),sigmac,rand,rand_normal, &
 !     *              dnu_nu0(1,i,j,k),sigma(i,j,k),rand,rand_normal,
                     Nray,i,j,k)
             end do
@@ -665,7 +664,7 @@
                     x1(1,i,j,k),y1(1,i,j,k),z1(1,i,j,k), &
                     x2(1,i,j,k),y2(1,i,j,k),z2(1,i,j,k), &
 !     *                   dnu_nu0(1,i,j,k),sigma,rand,rand_normal,
-                    dnu_nu0(1,i,j,k),sigma(i,j,k),rand,rand_normal, & !sigma(i,j,k)
+                    dnu_nu0(1,i,j,k),sigma(i,j,k),rand,rand_normal, &
                     Nray,i,j,k)
             end do
          end do
@@ -888,7 +887,7 @@
             isigz = 1
          else
             iz(iray) = 1
-            isigz = 0 !do roop no hurui kakika
+            isigz = 0
          endif
 
 
@@ -927,9 +926,9 @@
         if(abs(ty) > 1.e8) ty=1.e8
 !       if(abs(tz) > 1.e4) tz=1.e4
 
-!	print*,'tx, ty, tz = ', tx, ty, tz
+        print*,'tx, ty, tz = ', tx, ty, tz
         dl=min(tx,ty,tz)
-!	print*, 'dl = ', dl, dl/tx, dl/ty, dl/tz
+        print*, 'dl = ', dl, dl/tx, dl/ty, dl/tz
 !       ixmin=int(dl/tx)               ! 1: if tx=min 0: otherwise
 !       iymin=int(dl/ty)               ! 1: if ty=min 0: otherwise
 !       izmin=int(dl/tz)               ! 1: if tz=min 0: otherwise
@@ -1123,7 +1122,7 @@
         end do
       end do
 
-!      print*,'<solve_i> max, min of alpha', maxval(alpha), minval(alpha)
+      print*,'<solve_i> max, min of alpha', maxval(alpha), minval(alpha)
 
 
 !      stop
@@ -1289,7 +1288,7 @@
           a0(i,i)=a0(i,i)+totC(i)
         end do
 
-!        print*, 'a0 = ', a0
+        print*, 'a0 = ', a0
 !        a0(levmax,0:levmax)=1d0
        
         b0(0:levmax-1)=0d0
@@ -2097,7 +2096,7 @@
       END IF
 !MAIN LOOP
       CALL URAND1(NN, X, IR)
-      DO 10 I = 1, NN, 2 !do roop no hurui kakikata
+      DO 10 I = 1, NN, 2
        R=SQRT(-2.0D0*LOG(X(I)))
        T=PI2*X(I+1)
        X(I  ) = R * SIN(T)
@@ -2221,7 +2220,7 @@
       Endif
       Read(10,*)
 
-!	print*,'tablemax, tablemin: ', TABLEMIN,TABLEMAX
+      print*,'tablemax, tablemin: ', TABLEMIN,TABLEMAX
 
       Do l=TABLEMIN,TABLEMAX
 
@@ -2229,11 +2228,11 @@
 !         write(*,*)'Tklist',tklist(l)
          Read(10,*)
 
-!         print*, 'NLEVMAX=', NLEVMAX
+         print*, 'NLEVMAX=', NLEVMAX
          Do j=0,NLEVMAX
             Read(10,*) (tempdblearray(i),i=0,NLEVMAX)
             Do k = 0,NLEVMAX
-!	       print*,'tempdblearray = ', k,j, tempdblearray(k)
+               print*,'tempdblearray = ', k,j, tempdblearray(k)
                CTABLE(l,k,j) = tempdblearray(k)
             End do
          End do
@@ -2288,7 +2287,7 @@
       thigh = tklist(it)
       tlow = tklist(it-1)
       ilabel = it
-!     print*, 'thigh and tlow in get_c',tlow,thigh,tk(ii,jj,kk)
+      print*, 'thigh and tlow in get_c',tlow,thigh,tk(ii,jj,kk)
 !     $              ,it
       
 !     If (tlow.eq.0.0D0) tlow = 5.0

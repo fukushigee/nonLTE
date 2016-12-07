@@ -179,7 +179,7 @@
 ! lev+50=50,51,... norm
 ! lev+60=60,61,... disp
 ! lev+10=10,11,... Tr
-! 200, 5 are changed to variables in cpp
+! 20, 5 are changed to variables in cpp
 ! L.986 do lev=0,lavmax-->do lev=1,lavmax
 !
 ! 7.2: Solve_I_0 is revised to fit
@@ -204,7 +204,7 @@
       use state_inc ! module for get_c
 
       implicit real*8 (a-h,o-z)
-      parameter (levmax=5,Loopmax=20)
+      parameter (levmax=5,Loopmax=5)
       dimension dif(0:levmax)
 
 !--- test for poprot subroutine(MY, Jul.10.2006)
@@ -271,14 +271,14 @@
       end select
 
       do Loop=1,Loopmax
-! print*, 'Loop before Solve_I=', Loop
+         print*, 'Loop before Solve_I=', Loop
          call Solve_I
 !debug
 ! stop
 !debug
         call norm(dif)
         call underrelaxation(1d0)
-!! print*, 'Loop before Temperature=', Loop
+!!! print*, 'Loop before Temperature=', Loop
 !! print*, Loop, float(Loop), 10**(int(log10(float(Loop))))
 !! $ , min(10, 10**(int(log10(float(Loop)))))
 !! if(mod(Loop,10**(int(log10(float(Loop)))))==0) then
@@ -424,7 +424,7 @@
       use Rays
       use state_inc
       implicit real*8(a-h,o-z)
-      parameter(Nray0=200,levmax=5,ixm2=ixm+2,iym2=iym+2,izm2=izm+2, &
+      parameter(Nray0=20,levmax=5,ixm2=ixm+2,iym2=iym+2,izm2=izm+2, &
                 pc=3.0857d18, au = 1.496d13)
 
       real*8, dimension(1:ixmax+1, 1:iymax+1, 1:izmax+1) :: sigma
@@ -547,7 +547,7 @@
 ! r2=(rmax/dx0)**2
       eps=1d-8
 
-      Nray=200
+      Nray=20
 
 ! print parameters
       write(*,'(''Ng='',i3)') ng
@@ -580,8 +580,8 @@
 ! endif
 !debug
       end do
-! print*, 'min and max BG=', minval(BG), maxval(BG)
-! print*, 'min and max e=', minval(e), maxval(e)
+      print*, 'min and max BG=', minval(BG), maxval(BG)
+      print*, 'min and max e=', minval(e), maxval(e)
 
       read(molecule_data,*) level0
       if (level0 .ne. levmax) then
@@ -690,7 +690,7 @@
 
       subroutine getran(rand,N)
       implicit real*8(a-h,o-z)
-      parameter(Nray0=200)
+      parameter(Nray0=20)
       save ix, init
       data isw/0/,init/1/
       dimension rand(N),ivw(128)
@@ -737,7 +737,7 @@
 
       subroutine getran_normal(rand_normal,N)
       implicit real*8(a-h,o-z)
-      parameter(Nray0=200)
+      parameter(Nray0=20)
       real*8 rand_normal(N)
       real*4 s(Nray0)
       data init/1/
@@ -912,9 +912,9 @@
         if(abs(ty) > 1.e8) ty=1.e8
 ! if(abs(tz) > 1.e4) tz=1.e4
 
-! print*,'tx, ty, tz = ', tx, ty, tz
+        print*,'tx, ty, tz = ', tx, ty, tz
         dl=min(tx,ty,tz)
-! print*, 'dl = ', dl, dl/tx, dl/ty, dl/tz
+        print*, 'dl = ', dl, dl/tx, dl/ty, dl/tz
 ! ixmin=int(dl/tx) ! 1: if tx=min 0: otherwise
 ! iymin=int(dl/ty) ! 1: if ty=min 0: otherwise
 ! izmin=int(dl/tz) ! 1: if tz=min 0: otherwise
@@ -1026,7 +1026,7 @@
       use Rays
       use state_inc
       implicit real*8(a-h,o-z)
-      parameter(levmax=5,Nray0=200, &
+      parameter(levmax=5,Nray0=20, &
                 ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
       integer, parameter::dim_n=(levmax+1)*ixm*iym*izm, &
                           dim_c=(nlevmax+1)*(nlevmax+1)
@@ -1108,7 +1108,7 @@
         end do
       end do
 
-! print*,'<solve_i> max, min of alpha', maxval(alpha), minval(alpha)
+      print*,'<solve_i> max, min of alpha', maxval(alpha), minval(alpha)
 
 
 ! stop
@@ -1193,7 +1193,7 @@
       implicit real*8(a-h,o-z)
 ! parameter (ng=128)
       parameter(ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
-      parameter (Nray0=200,levmax=5)
+      parameter (Nray0=20,levmax=5)
 ! real*8 S(levmax)
       real*8 w(levmax), Intensity(Nray0,levmax), Js(levmax)
       real*8 nx(Nray), ny(Nray), nz(Nray) ! directions of Rays from boundary to (x0,y0,z0)
@@ -1274,7 +1274,7 @@
           a0(i,i)=a0(i,i)+totC(i)
         end do
 
-! print*, 'a0 = ', a0
+        print*, 'a0 = ', a0
 ! a0(levmax,0:levmax)=1d0
 
         b0(0:levmax-1)=0d0
@@ -1570,7 +1570,7 @@
       use state_inc
       implicit real*8(a-h,o-z)
 
-      parameter (Nray0=200,Lmax=ng*3,levmax=5, ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
+      parameter (Nray0=20,Lmax=ng*3,levmax=5, ixm2=ixm+2,iym2=iym+2,izm2=izm+2)
       common /grid/ xf(0:ixm2), yf(0:iym2), zf(0:izm2), dx0, eps, xcent, ycent, zcent
       common /const/ h,lc,bc
       real*8 lc
@@ -1825,7 +1825,7 @@
       use Rays
       use state_inc
       implicit real*8(a-h,o-z)
-      parameter(Nray0=200,levmax=5, &
+      parameter(Nray0=20,levmax=5, &
                 ixm2=ixm+2,iym2=iym+2,izm2=izm+2,pc=3.0857d18)
 
 ! common /Rays/ x0,y0,z0,nx,ny,nz,x1,y1,z1,x2,y2,z2,dnu_nu0,Nray
@@ -2206,7 +2206,7 @@
       Endif
       Read(10,*)
 
-! print*,'tablemax, tablemin: ', 1,40
+      print*,'tablemax, tablemin: ', 1,40
 
       Do l=1,40
 
@@ -2214,11 +2214,11 @@
 ! write(*,*)'Tklist',tklist(l)
          Read(10,*)
 
-! print*, 'NLEVMAX=', 29
+         print*, 'NLEVMAX=', 29
          Do j=0,29
             Read(10,*) (tempdblearray(i),i=0,29)
             Do k = 0,29
-! print*,'tempdblearray = ', k,j, tempdblearray(k)
+               print*,'tempdblearray = ', k,j, tempdblearray(k)
                CTABLE(l,k,j) = tempdblearray(k)
             End do
          End do
@@ -2273,7 +2273,7 @@
       thigh = tklist(it)
       tlow = tklist(it-1)
       ilabel = it
-! print*, 'thigh and tlow in get_c',tlow,thigh,tk(ii,jj,kk)
+      print*, 'thigh and tlow in get_c',tlow,thigh,tk(ii,jj,kk)
 ! $ ,it
 
 ! If (tlow.eq.0.0D0) tlow = 5.0

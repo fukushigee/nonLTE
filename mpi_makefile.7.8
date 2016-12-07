@@ -13,7 +13,8 @@ F90C = ftn
 #F90 =  /usr/lang/mpi2/bin/mpifrt
 # F90 = frt
 RM=/bin/rm
-F90FLAGS = 	-c -132 -O2 -f90=gfortran
+F90FLAGS = 	-c -132 -O2
+#F90FLAGS = 	-c -132 -O2 -f90=gfortran
 #F90FLAGS        = -c  -132  -O3
 #F90FLAGS = -132 -w95 -w90 -d2 -C
 #F90FLAGS = -132 -w95 -w90 -static -O5 #-convert big_endian
@@ -70,4 +71,4 @@ dlubksb.o : $(NRDIR)/dlubksb.f90
 	$(F90C) $(F90FLAGS)  -c $(NRDIR)/dlubksb.f90
 
 clean: 
-	$(RM) *.o *.f tes* fuku*
+	$(RM) *.o *.f tes*

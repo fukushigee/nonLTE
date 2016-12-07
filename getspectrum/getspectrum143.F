@@ -23,7 +23,7 @@
 #ifdef ALPHA
 #define NG 128
 #define NGZ 128 
-#define NRAY 200
+#define NRAY 20
 #define LEVMAX 5 
 #define VIEWANGLE 45 
 #define NCHANNEL 50
@@ -32,7 +32,7 @@
 !#define LEVD 'pma0129_data2/010nlev.d'
 !#define SPECT 'pma0129_data2/sp'
 !#define INTENSITY 'pma0129_data2/intensity'
-#define LEVD '0020nlev.d'
+#define LEVD '005nlev.d'
 !#define LEVD '006nlev_hcn.d'
 #define SPECT 'sp'
 #define INTENSITY 'intensity'
@@ -393,9 +393,10 @@
             write(c,'(i2.2)')lev
             open(12+lev, file=SPECT//c//'.cube',
      *                 status='unknown',form='unformatted')
-                write(12+lev) nsp, mvelmax 
+                !write(12+lev) nsp, mvelmax 
 ! Ngrid, num.of velocity channels 
-                write(12+lev) radial_velocity,TBcube(:,:,:,lev) 
+                write(12+lev) TBcube(:,:,:,lev) 
+                !write(12+lev) radial_velocity,TBcube(:,:,:,lev) 
             close(12+lev)
         enddo
 
