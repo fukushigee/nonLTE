@@ -28,11 +28,8 @@
 *.out
 *.app
 
-
-#add fukushige
+# fukushige
 *.data
-*.cube
-*.d
-*.b
-data3/*
 getspectrum/sp*
+data3/
+fuku*

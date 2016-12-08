@@ -18,4 +18,5 @@ cd /work/fukushigers/nonlte2/getspectrum
 make -f makefile_spect clean
 make -f makefile_spect
 
-time aprun  ./getspectrum143
+time aprun  ./getspectrum143 >& fuku.log
+

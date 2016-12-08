@@ -70,7 +70,7 @@
 !# when use scalar sigma (torus), flag 0
 
 !#--- end of parameter setting part (MY) ----#
-!fukushige
+
 !-------------------------------------------------------------!
       module Rays
       real*8, save,allocatable :: x0(:,:,:), y0(:,:,:), z0(:,:,:)
@@ -271,14 +271,14 @@
       end select
 
       do Loop=1,Loopmax
-         print*, 'Loop before Solve_I=', Loop
+! print*, 'Loop before Solve_I=', Loop
          call Solve_I
 !debug
 ! stop
 !debug
         call norm(dif)
         call underrelaxation(1d0)
-!!! print*, 'Loop before Temperature=', Loop
+!! print*, 'Loop before Temperature=', Loop
 !! print*, Loop, float(Loop), 10**(int(log10(float(Loop))))
 !! $ , min(10, 10**(int(log10(float(Loop)))))
 !! if(mod(Loop,10**(int(log10(float(Loop)))))==0) then
@@ -580,8 +580,8 @@
 ! endif
 !debug
       end do
-      print*, 'min and max BG=', minval(BG), maxval(BG)
-      print*, 'min and max e=', minval(e), maxval(e)
+! print*, 'min and max BG=', minval(BG), maxval(BG)
+! print*, 'min and max e=', minval(e), maxval(e)
 
       read(molecule_data,*) level0
       if (level0 .ne. levmax) then
@@ -912,9 +912,9 @@
         if(abs(ty) > 1.e8) ty=1.e8
 ! if(abs(tz) > 1.e4) tz=1.e4
 
-        print*,'tx, ty, tz = ', tx, ty, tz
+! print*,'tx, ty, tz = ', tx, ty, tz
         dl=min(tx,ty,tz)
-        print*, 'dl = ', dl, dl/tx, dl/ty, dl/tz
+! print*, 'dl = ', dl, dl/tx, dl/ty, dl/tz
 ! ixmin=int(dl/tx) ! 1: if tx=min 0: otherwise
 ! iymin=int(dl/ty) ! 1: if ty=min 0: otherwise
 ! izmin=int(dl/tz) ! 1: if tz=min 0: otherwise
@@ -1108,7 +1108,7 @@
         end do
       end do
 
-      print*,'<solve_i> max, min of alpha', maxval(alpha), minval(alpha)
+! print*,'<solve_i> max, min of alpha', maxval(alpha), minval(alpha)
 
 
 ! stop
@@ -1274,7 +1274,7 @@
           a0(i,i)=a0(i,i)+totC(i)
         end do
 
-        print*, 'a0 = ', a0
+! print*, 'a0 = ', a0
 ! a0(levmax,0:levmax)=1d0
 
         b0(0:levmax-1)=0d0
@@ -2206,7 +2206,7 @@
       Endif
       Read(10,*)
 
-      print*,'tablemax, tablemin: ', 1,40
+! print*,'tablemax, tablemin: ', 1,40
 
       Do l=1,40
 
@@ -2214,11 +2214,11 @@
 ! write(*,*)'Tklist',tklist(l)
          Read(10,*)
 
-         print*, 'NLEVMAX=', 29
+! print*, 'NLEVMAX=', 29
          Do j=0,29
             Read(10,*) (tempdblearray(i),i=0,29)
             Do k = 0,29
-               print*,'tempdblearray = ', k,j, tempdblearray(k)
+! print*,'tempdblearray = ', k,j, tempdblearray(k)
                CTABLE(l,k,j) = tempdblearray(k)
             End do
          End do
@@ -2273,7 +2273,7 @@
       thigh = tklist(it)
       tlow = tklist(it-1)
       ilabel = it
-      print*, 'thigh and tlow in get_c',tlow,thigh,tk(ii,jj,kk)
+! print*, 'thigh and tlow in get_c',tlow,thigh,tk(ii,jj,kk)
 ! $ ,it
 
 ! If (tlow.eq.0.0D0) tlow = 5.0

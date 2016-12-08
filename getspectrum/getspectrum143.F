@@ -77,7 +77,7 @@
       module phys_const
                 real*8, parameter :: H    = 6.626184D-27 !Plank Constant [erg s]
                 real*8, parameter :: lc   =2.99792458d10    !Speed of Light [cm/s] 
-           real*8, parameter :: bc=1.380658d-16     !Boltzmanns Constant [erg/K]
+           real*8, parameter :: bc=1.380658d-16     !Boltzmann's Constant [erg/K]
            real*8, parameter :: bb=57.6356D9  ! CO Rotation Constant (Robinson 1974) in GHz
            real*8, parameter :: mu=0.112D-18  ! CO electric dipole moment 
            real*8, parameter :: pi= 3.141592
@@ -334,7 +334,7 @@
       integer ::i,j,k, i1, i2, ireturn1, ireturn2, lev
       real*8  ::x1,y1,z1  ! starting point
       real*8  ::x2,y2,z2  ! end point
-      real*8  :: xinit, yinit, zinit
+      real*8  :: zinit, yinit, xinit
       real :: tmp_tbi(1:nsp, 1:nsp)
       character(40) :: outspect
       character*2 c
@@ -354,7 +354,7 @@
         yinit=yg1(i1)+yg2(i2)
         xinit=xg1(i1)+xg2(i2)
 !        write(*,*) i1,i2,xinit,yinit,zinit
-      call find_bound_from_outside(xinit,yinit,zinit, x1,y1,z1,ireturn1)
+        call find_bound_from_outside(xinit,yinit,zinit, x1,y1,z1,ireturn1)
 !        write(*,*) x1,y1,z1
         call find_bound_from_inside(x1,y1,z1, x2,y2,z2,ireturn2)
 !        write(*,*) x2,y2,z2
@@ -393,10 +393,9 @@
             write(c,'(i2.2)')lev
             open(12+lev, file=SPECT//c//'.cube',
      *                 status='unknown',form='unformatted')
-                !write(12+lev) nsp, mvelmax 
+                write(12+lev) nsp, mvelmax 
 ! Ngrid, num.of velocity channels 
-                write(12+lev) TBcube(:,:,:,lev) 
-                !write(12+lev) radial_velocity,TBcube(:,:,:,lev) 
+                write(12+lev) radial_velocity,TBcube(:,:,:,lev) 
             close(12+lev)
         enddo
 

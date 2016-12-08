@@ -15,3 +15,6 @@ cd /work/fukushigers/nonlte2/zikkou
 #aprun -n 96 ./fuku.out
 time aprun -n 64 ./fuku.out >& fuku.log
 
+
+
+#from nonlte4

@@ -40,4 +40,4 @@ ${src}: $(src).o
 #	$(F77) $(LFLAGS) -o ${src} $(src).o -lssl2vp
 	$(F77) $(LFLAGS) -o ${src} $(src).o
 clean: 
-	$(RM) *.o *.f sp* 
+	$(RM) *.o *.f
